@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:07:33 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/14 14:29:33 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/15 00:24:09 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 /// @brief Bu fonksiyon verilen stack'ı sıralı olup olmadığını kontrol eder.
 /// @param stack_a
 /// @return Stack sıralı ise 0, değilse 1
-int ft_is_sorted(t_stack *stack)
+int	ft_is_sorted(t_stack *stack)
 {
-    while (stack->next)
-    {
-        if (stack->nbr > stack->next->nbr)
-            return (0);
-        stack = stack->next;
-    }
-    return (1);
+	while (stack->next)
+	{
+		if (stack->nbr > stack->next->nbr)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
 /// @brief Bu fonksiyon stack'ın içinde aynı sayının iki kez tekrar edip
