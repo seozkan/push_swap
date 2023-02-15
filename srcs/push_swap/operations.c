@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:09:15 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/15 00:24:56 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/15 21:07:49 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 /// @param j Değeri 0 verilirse ekrana pb\\n bastırır.
 void	ft_pa(t_stack **stack_a, t_stack **stack_b, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
 
 	if (!*stack_b)
 		return ;
-	tmp = *stack_a;
-	*stack_a = *stack_b;
+	first = *stack_b;
 	*stack_b = (*stack_b)->next;
-	(*stack_a)->next = tmp;
+	first->next = *stack_a;
+	*stack_a = first;
 	if (j == 0)
 		write(1, "pa\n", 3);
 }
@@ -38,14 +38,14 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b, int j)
 /// @param j Değeri 0 verilirse ekrana pb\\n bastırır.
 void	ft_pb(t_stack **stack_a, t_stack **stack_b, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
 
 	if (!*stack_a)
 		return ;
-	tmp = *stack_b;
-	*stack_b = *stack_a;
+	first = *stack_a;
 	*stack_a = (*stack_a)->next;
-	(*stack_b)->next = tmp;
+	first->next = *stack_b;
+	*stack_b = first;
 	if (j == 0)
 		write(1, "pb\n", 3);
 }
@@ -56,15 +56,18 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, int j)
 /// @param j Değeri 0 verilmişse ekrana ra\\n yazar.
 void	ft_ra(t_stack **stack_a, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*last;
 
-	if (!*stack_a || !(*stack_a)->next)
+	if (!(*stack_a) || !(*stack_a)->next)
 		return ;
-	tmp = *stack_a;
-	*stack_a = ft_stack_last(*stack_a);
-	(*stack_a)->next = tmp;
-	*stack_a = tmp->next;
-	tmp->next = NULL;
+	first = *stack_a;
+	last = *stack_a;
+	while (last->next)
+		last = last->next;
+	(*stack_a) = (*stack_a)->next;
+	first->next = NULL;
+	last->next = first;
 	if (j == 0)
 		write(1, "ra\n", 3);
 }
@@ -75,15 +78,18 @@ void	ft_ra(t_stack **stack_a, int j)
 /// @param j Değeri 0 verilmişse ekrana rb\\n yazar.
 void	ft_rb(t_stack **stack_b, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*last;
 
-	if (!*stack_b || !(*stack_b)->next)
+	if (!(*stack_b) || !(*stack_b)->next)
 		return ;
-	tmp = *stack_b;
-	*stack_b = ft_stack_last(*stack_b);
-	(*stack_b)->next = tmp;
-	*stack_b = tmp->next;
-	tmp->next = NULL;
+	first = *stack_b;
+	last = *stack_b;
+	while (last->next)
+		last = last->next;
+	(*stack_b) = (*stack_b)->next;
+	first->next = NULL;
+	last->next = first;
 	if (j == 0)
 		write(1, "rb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:09:10 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/15 00:25:04 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/15 21:05:59 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 /// herhangi bir şey yapmaz.
 /// @param stack
 /// @param j Değeri 0 verilmişse ekrana sa\\n yazar.
-void	ft_sa(t_stack **stack, int j)
+void	ft_sa(t_stack **stack_a, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*second;
 
-	if (!*stack || !((*stack)->next))
+	first = *stack_a;
+	second = NULL;
+	if (!*stack_a || !(*stack_a)->next)
 		return ;
-	tmp = *stack;
-	*stack = (*stack)->next;
-	tmp->next = (*stack)->next;
-	(*stack)->next = tmp;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*stack_a = second;
 	if (j == 0)
 		write(1, "sa\n", 3);
 }
@@ -38,14 +41,17 @@ void	ft_sa(t_stack **stack, int j)
 /// @param j Değeri 0 verilmişse ekrana sb\\n yazar.
 void	ft_sb(t_stack **stack_b, int j)
 {
-	t_stack	*tmp;
+	t_stack	*first;
+	t_stack	*second;
 
-	if (!*stack_b || !((*stack_b)->next))
+	first = *stack_b;
+	second = NULL;
+	if (!*stack_b || !(*stack_b)->next)
 		return ;
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	tmp->next = (*stack_b)->next;
-	(*stack_b)->next = tmp;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*stack_b = second;
 	if (j == 0)
 		write(1, "sb\n", 3);
 }

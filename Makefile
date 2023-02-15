@@ -6,7 +6,7 @@
 #    By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 22:06:42 by seozkan           #+#    #+#              #
-#    Updated: 2023/02/13 19:17:55 by seozkan          ###   ########.fr        #
+#    Updated: 2023/02/15 20:11:39 by seozkan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJ_2 = ${SRC_2:.c=.o}
 BONUS_OBJ =${BONUS_SRC:.c=.o}
 
 .c.o:
-	${CC} -c $< -o ${<:.c=.o}
+	${CC} -c $< -o ${<:.c=.o} -g
 
 ${NAME}: ${OBJ_1} ${OBJ_2}
 	${CC} ${FLAGS} ${OBJ_1} ${OBJ_2} -o ${NAME}
