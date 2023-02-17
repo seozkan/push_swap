@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:07:06 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/10 21:49:16 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/18 00:19:02 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,12 @@ int	main(int argc, char **argv)
 	char	*line;
 
 	stack_b = NULL;
+	if (!ft_check_args(argc, argv))
+		ft_error();
 	stack_a = ft_create_and_fill_stack(argc, argv);
-	if (!stack_a || !ft_check_args(argc, argv, stack_a))
+	if (!stack_a || ft_is_duplicate(stack_a))
 	{
-		ft_free(stack_a);
+		free(stack_a);
 		ft_error();
 	}
 	line = get_next_line(0);

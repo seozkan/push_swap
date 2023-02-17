@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:03:28 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/10 21:47:50 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/18 00:14:10 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ typedef struct s_stack
 int					ft_atoi(const char *str);
 t_stack				*ft_create_and_fill_stack(int argc, char **argv);
 void				ft_add_back(t_stack **stack, t_stack *stack_new);
-int					ft_check_args(int argc, char **argv, t_stack *stack);
+int					ft_check_args(int argc, char **argv);
 int					ft_is_duplicate(t_stack *stack);
 int					ft_is_sorted(t_stack *stack_a);
-int					is_digit(int c);
 t_stack				*ft_create_new_stack(int nbr);
 void				ft_error(void);
 void				ft_free(t_stack *stack);
@@ -37,10 +36,10 @@ int					ft_make_rarb(t_stack **stack_a, t_stack **stack_b, int nbr,
 						char s);
 int					ft_make_rrarrb(t_stack **stack_a, t_stack **stack_b,
 						int nbr, char s);
-int					ft_make_rrarb(t_stack **stack_a, t_stack **stack_b,
-						int nbr, char s);
-int					ft_make_rarrb(t_stack **stack_a, t_stack **stack_b,
-						int nbr, char s);
+int					ft_make_rrarb(t_stack **stack_a, t_stack **stack_b, int nbr,
+						char s);
+int					ft_make_rarrb(t_stack **stack_a, t_stack **stack_b, int nbr,
+						char s);
 int					ft_rotate_type_ba(t_stack *stack_a, t_stack *stack_b);
 int					ft_rotate_type_ab(t_stack *a, t_stack *b);
 void				ft_sort_b_till_3(t_stack **stack_a, t_stack **stack_b);
@@ -80,4 +79,8 @@ void				ft_check_sub(t_stack **stack_a, t_stack **stack_b,
 char				*ft_check(t_stack **stack_a, t_stack **stack_b, char *line);
 void				ft_checker_sub(t_stack **stack_a, t_stack **stack_b,
 						char *line);
+void				ft_freestr(char **str);
+int					count_words(const char *str, char c);
+char				*word_dup(const char *str, int start, int finish);
+char				**ft_split(char const *s, char c);
 #endif

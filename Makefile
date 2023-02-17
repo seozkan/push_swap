@@ -6,7 +6,7 @@
 #    By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 22:06:42 by seozkan           #+#    #+#              #
-#    Updated: 2023/02/15 20:11:39 by seozkan          ###   ########.fr        #
+#    Updated: 2023/02/17 22:49:28 by seozkan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_2 =	srcs/push_swap/check.c \
 		srcs/push_swap/stack_utils.c \
 		srcs/push_swap/utils_two.c \
 		srcs/push_swap/utils.c \
+		srcs/push_swap/split.c
 		
 BONUS_SRC = srcs/checker/checker.c \
 			gnl/get_next_line.c \

@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:51:14 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/09 23:46:21 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:57:32 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,19 @@ void	ft_free(t_stack *stack)
 		free(stack);
 		stack = tmp;
 	}
+}
+
+void	ft_freestr(char **str)
+{
+	char	*tmp;
+
+	if (!str)
+		return ;
+	while (*str)
+	{
+		tmp = *str;
+		str++;
+		free(tmp);
+	}
+	*str = NULL;
 }

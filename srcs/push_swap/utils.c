@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:07:14 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/09 23:40:41 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:32:02 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ t_stack	*ft_create_new_stack(int nbr)
 	stack->nbr = nbr;
 	stack->next = NULL;
 	return (stack);
-}
-
-int	is_digit(int c)
-{
-	if (c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	return (0);
 }
 
 int	ft_atoi(const char *str)
@@ -64,6 +55,27 @@ int	ft_atoi(const char *str)
 	return (mod * i);
 }
 
+t_stack	*ft_one_argument_cafs(char **argv)
+{
+	t_stack	*stack_a;
+	char	**tmp;
+	int		i;
+	int		j;
+
+	stack_a = NULL;
+	i = 0;
+	tmp = ft_split(argv[1], 32);
+	while (tmp[i])
+	{
+		j = ft_atoi(tmp[i]);
+		ft_add_back(&stack_a, ft_create_new_stack(j));
+		i++;
+	}
+	ft_freestr(tmp);
+	free(tmp);
+	return (stack_a);
+}
+
 /// @brief Bu fonksiyon argv'nin içindeki parametereleri ft_atoi yardımıyla
 /// tam sayıya çevirir ve çevrilen bu sayıdan yeni bir stack oluşturur.
 /// Oluşturulan bu stack, stack_a nın yeni bir elemanı olarak stack_a'ya
@@ -81,6 +93,8 @@ t_stack	*ft_create_and_fill_stack(int argc, char **argv)
 	stack_a = NULL;
 	if (argc < 2)
 		exit(1);
+	if (argc == 2)
+			stack_a = ft_one_argument_cafs(argv);
 	else
 	{
 		while (i < argc)

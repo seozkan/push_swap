@@ -6,23 +6,11 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 23:40:54 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/09 19:07:44 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/17 23:54:39 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../gnl/get_next_line.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
 
 char	*ft_substr(const char *str, int start, int end)
 {
@@ -63,8 +51,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while (s2[j])
+		j++;
 	join = (char *)malloc(i + j + 1);
 	i = -1;
 	j = -1;

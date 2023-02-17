@@ -6,7 +6,7 @@
 /*   By: seozkan <seozkan@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:07:33 by seozkan           #+#    #+#             */
-/*   Updated: 2023/02/15 00:24:09 by seozkan          ###   ########.fr       */
+/*   Updated: 2023/02/18 00:16:25 by seozkan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ int	ft_is_duplicate(t_stack *stack)
 /// fonksiyonu çağırır.
 /// @param argv
 /// @return
-int	ft_check_args(int argc, char **argv, t_stack *stack)
+int	ft_check_args(int argc, char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	if (ft_is_duplicate(stack))
-		return (0);
 	while (i < argc)
 	{
 		j = 0;
@@ -70,9 +68,8 @@ int	ft_check_args(int argc, char **argv, t_stack *stack)
 			return (0);
 		while (argv[i][j])
 		{
-			if (argv[i][j] == '-' || argv[i][j] == '+')
-				j++;
-			else if (!is_digit(argv[i][j]))
+			if (!(argv[i][j] == ' ' || argv[i][j] == '-' || argv[i][j] == '+')
+				&& (argv[i][j] < '0' || argv[i][j] > '9'))
 				return (0);
 			j++;
 		}
